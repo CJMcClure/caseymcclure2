@@ -1,0 +1,62 @@
+---
+# Install Nginx ##########################################################################################
+- name: Add Nginx Repo
+  apt_repository: repo='ppa:nginx/stable' state=present
+
+- name: Install Nginx
+  apt: pkg=nginx state=latest update_cache=true
+  notify:
+    - Start Nginx
+
+- name: Change web based file permissions
+  become: true
+  become_user: root
+  file:
+    path: "{{ item }}"
+    recurse: yes
+    group: dwa
+  with_items:
+    - /etc/nginx/
+
+# Install MariaDB ############################################################################################
+- name: Add MariaDB repository 
+  apt_repository: 
+    repo: 'deb http://ftp.igh.cnrs.fr/pub/mariadb/repo/10.0/ubuntu trusty main' 
+    state: present 
+
+- name: Add repository key to the system 
+  apt_key: 
+    keyserver: keyserver.ubuntu.com 
+    id: "0xcbcb082a1bb943db"
+
+- name: Install DB packages
+  apt: 
+    name: "{{ item }}" 
+    state: latest 
+    update_cache: yes
+  with_items:
+    - mariadb-server
+
+# Configure MariaDB #
+- name: Delete Anonymous MySQL user
+  mysql_user:
+    name: ''
+    host: localhost
+    state: absent
+
+- name: Create non-root user
+  mysql_user:
+    name: "{{ mysql['user'] }}"
+    password: "{{mysql['password']}}"
+    priv: '*.*:ALL'
+    state: present
+
+ 
+
+
+  
+    
+
+
+
+
