@@ -1,3 +1,5 @@
+[Server Configuration](./setup.md)
+
 # Portfolio deployment pipeline
 
 ## 1. Configure the local environment
