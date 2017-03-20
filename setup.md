@@ -1,16 +1,16 @@
 # Server Setup
 
-##Create Droplets (Servers)
+## Create Droplets (Servers)
 
-###Sign Up
+### Sign Up
 
 Setup an account at [Digital Ocean](https://www.digitalocean.com)
 
 > Once you are logged in, complete the following steps from your dashboard.
 
-###Initialize
+### Initialize
 
-####Staging Server
+#### Staging Server
 
 Click the `Create Droplet` button.
 
@@ -26,7 +26,7 @@ Click `Create`
 
 > Note: Copy the ip address somewhere readily available, we'll use it within the next few steps
 
-####Production Server
+#### Production Server
 
 Click the `Create Droplet` button.
 
@@ -42,16 +42,32 @@ Click `Create`
 
 > Note: Copy the ip address somewhere readily available, we'll use it within the next few steps
 
+#### Jenkins Server
+
+Click the `Create Droplet` button.
+
+Select `Ubuntu 16.04.2x64`
+
+Select `$5/mth` size package
+
+Select a `New York` data center
+
+Name Droplet `jenkins`
+
+Click `Create`
+
+> Note: Copy the ip address somewhere readily available, we'll use it within the next few steps
+
 ## Install Ansible
 
-###Homebrew First
+### Homebrew First
 
 From your terminal, enter the following command:
 
 ```Shell
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)
 ```
-###Ansible Second
+### Ansible Second
 
 From your terminal, enter the following command:
 
@@ -71,7 +87,7 @@ In terminal change directories to the cloned projects, ansible directory:
 ```Shell
 cd /Path/to/caseymcclure2/ansible
 ```
-###Add staging and production ip's to ansible-playbook
+### Add staging and production ip's to ansible-playbook
 
 Open the `hosts` file in your favorite text editor
 
