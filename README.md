@@ -1,15 +1,26 @@
+[Server Configuration](./setup.md)
+
 # Portfolio deployment pipeline
 
 ## 1. Configure the local environment
 
-Open your terminal and navigate to a directory you want the project to be cloned into.
+Install pm2 Globally on your machine, open your terminal and enter the following command:
+
+```Shell
+npm i pm2 -g
+```
+
+Navigate to a directory you want the project to be cloned into.
 
 Once you are in that directory: 
 
 ```Shell
 git clone https://github.com/CJMcClure/caseymcclure2
-```
 
+cd caseymcclure2
+
+npm install
+```
 Inside the directory you will find a file titled `ecosystem.config.js.sample`
 
 Rename this file to `ecosystem.config.js`
@@ -36,7 +47,13 @@ This file will be used to start our application and is also where you will defin
 * `<project-dir>` is the path to this project on your local machine.
 * `<your-db-user>` is the user for this projects database
 * `<your-db-password>` is the password for your user
-* `<your-db>` is the database you created for this project. 
+* `<your-db>` is the database you created for this project.
+
+To start the application, enter the following command in your terminal from the projects root directory:
+
+```Shell
+pm2 start ecosystem.config.js
+```
 
 ## 2. Commit changes to Github
 
