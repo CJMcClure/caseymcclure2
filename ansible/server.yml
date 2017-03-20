@@ -1,0 +1,8 @@
+---
+- hosts: staging:production
+  become: true
+  user: root
+  roles:
+    - lem
+    - node
+    - jenkins
