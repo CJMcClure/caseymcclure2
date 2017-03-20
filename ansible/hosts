@@ -3,3 +3,6 @@
 
 [production]
 # Production server ip goes here
+
+[jenkins]
+# Jenkins server ip goes here
