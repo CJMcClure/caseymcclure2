@@ -1,0 +1,19 @@
+---
+- name: Create caseymcclure2 database
+  mysql_db:
+    name: caseymcclure2
+    state: present
+
+- name: Create non-root user
+  mysql_user:
+    name: "{{ mysql['user'] }}"
+    password: "{{ mysql['password'] }}"
+    priv: 'caseymcclure2.*:ALL'
+    state: present
+
+  
+    
+
+
+
+

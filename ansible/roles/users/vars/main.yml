@@ -1,0 +1,25 @@
+---
+
+# Use if root user is not already configured on your server
+# root_user: 
+# root_group: 
+# root_public_key:
+
+admin_user: #Put a unique username here
+admin_group: cm2_admin
+admin_public_key: #Create an ssh key for this user on your computer and place it's .pub key here
+
+dba_user: #Put a unique username here
+dba_group: cm2_dba
+dba_public_key: #Create an ssh key for this user on your computer and place it's .pub key here
+
+# Jenkins key
+deploy_user: #Put a unique username here
+deploy_group: cm2_deploy
+deploy_public_key: #Create an ssh key for this user on your computer and place it's .pub key here
+
+# Jenkins key 
+app_user: #Put a unique username here
+app_group: cm2_app
+app_public_key: #Create an ssh key for this user on your computer and place it's .pub key here
+

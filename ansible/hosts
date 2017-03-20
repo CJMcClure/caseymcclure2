@@ -1,0 +1,5 @@
+[staging]
+# Staging server ip goes here
+
+[production]
+# Production server ip goes here

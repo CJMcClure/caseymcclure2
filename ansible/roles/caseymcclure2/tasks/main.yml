@@ -1,0 +1,46 @@
+---
+- name: Add Caseymcclure2 Server Config
+  template: 
+    src: nginx_server_block.j2 
+    dest: /etc/nginx/sites-available/{{ nginx['domain'] }} 
+    owner: cm2admin
+    group: cm2_admin
+    mode: u=rwx,g=,o=
+
+- name: Enable Caseymcclure2 Site Config
+  file: 
+    src: /etc/nginx/sites-available/{{ nginx['domain'] }}
+    dest: /etc/nginx/sites-enabled/{{ nginx['domain'] }}
+    owner: cm2admin
+    group: cm2_admin
+    state: link
+
+- name: Create project root directory
+  file:
+    path: /var/www/{{ nginx['domain'] }}
+    state: directory
+    owner: cm2deploy
+    group: cm2_deploy
+    mode: u=rwx,g=rx,o=
+
+- name: Create ecosystems directory
+  file:
+    path: /var/ecosystems/
+    state: directory
+    mode: u=rx,g=,o=rx
+
+- name: Add Caseymcclure2 Ecosystem file
+  template: 
+    src: caseymcclure2.ecosystem.config.js.j2 
+    dest: /var/ecosystems/{{ nginx['domain'] }}.js
+    owner: cm2app
+    group: cm2_app
+    mode: u=rwx,g=r,o=
+
+ 
+
+
+
+
+
+
