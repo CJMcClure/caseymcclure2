@@ -2,6 +2,16 @@
 
 ## Create Droplets (Servers)
 
+### Droplet SSH key
+
+Create a generic SSH key to use during initial configuration, by typing the following command into your terminal:
+
+```Shell
+ssh-keygen -t rsa -b 4096
+```
+
+> Note: You will be prompted through the process, name it something unique, but easily memorable.
+
 ### Sign Up
 
 Setup an account at [Digital Ocean](https://www.digitalocean.com)
@@ -20,6 +30,10 @@ Select `$5/mth` size package
 
 Select a `New York` data center
 
+Add the SSH key you created earlier
+
+Select to use your SSH key
+
 Name Droplet `staging`
 
 Click `Create`
@@ -36,6 +50,8 @@ Select `$5/mth` size package
 
 Select a `New York` data center
 
+Select to use your SSH key
+
 Name Droplet `production`
 
 Click `Create`
@@ -51,6 +67,8 @@ Select `Ubuntu 16.04.2x64`
 Select `$5/mth` size package
 
 Select a `New York` data center
+
+Select to use your SSH key
 
 Name Droplet `jenkins`
 
@@ -167,7 +185,78 @@ ansible production -m raw -s -a "sudo apt-get -y install python-simplejson" -u r
 Now python2 is installed and we can run our ansible playbook with the following commands:
 
 ```Shell 
-ansible-playbook setup.yml -i ./hosts --private-key ~/.ssh/<ssh-key> 
+ansible-playbook server.yml -i ./hosts --private-key ~/.ssh/<ssh-key> 
+
+ansible-playbook project.yml -i ./hosts --private-key ~/.ssh/<ssh-key> 
+```
+> Note: `server.yml` configures servers specific requirements `project.yml` configures project specific requirements. It is neccessary to execute them in the order presented.
+
+## Configure Jenkins
+
+Jenkins requires verification of ownership, if you navigate to your Jenkins interface in a browser you will be prompted: 
+
+```Shell
+http://<jenkins-server-ip>:8080
+```
+You will be given a file path to an authorization code within your Jenkins server, so you'll have to ssh into your jenkins server and copy the code from the file:
+
+```Shell
+ssh -i ~/.ssh/<ssh-key> root@<jenkins-server-ip>
 ```
 
+* `<ssh-key>` is the key you created and added to digital ocean
+* `<jenkins-server-ip>` is the ip address of your jenkins server
+
+Now access the file path provided by Jenkins, copy the contents and paste them into the prompt box in the Jenkins browser interface. 
+
+You will be prompted through a few sign-up steps, follow them and remember the password you choose.
+
+Follow these steps to create a new job:
+
+> Note: You will complete this process **2** times, once for the staging server and once for the production server.
+
+1. Select `New Item` from the left menu bar
+1. Name your job `e.g. Staging_projectName`
+1. Select `Freestyle Project`
+1. Scroll to the bottom and click `OK`
+
+There are **3** sections we are concerned with configuring
+
+
+##### Source code management
+
+1. Repository URL is `https://github.com/CJMcClure/caseymcclure2`
+1. Credentials are the username and password of the github user with 
+access to the project's directory
+1. For Staging, the branch is `*/prerelease`
+1. For Production, the branch is `*/master` 
+
+##### Build Triggers
+
+1. Check the `GitHub hook trigger for GITScm polling` box
+
+##### Build
+
+1. Click `Add build step`
+1. Select `Execute Shell`
+1. Add this script:
+
+```Shell
+scp -r -i /var/lib/jenkins/.ssh/id_rsa $WORKSPACE/* <deploy-user>@<server-ip>:/var/www/caseymcclure2/
+
+ssh <app-user>@<server-ip> <<EOF
+cd /var/ecosystems
+/usr/local/lib/npm/bin/pm2 start caseymcclure2.js
+exit
+EOF
+``` 
+
+* `<deploy-user>` is configured in the [README.md](./README.md) process
+* `<app-user>` is configured in the [README.md](./README.md) process
+* `<server-ip>` will be your staging ip for the first job
+* `<server-ip` will be your production ip for the second job  
+
+Click `Apply` and `Save`
+
 Your servers are now configured for use.
+
