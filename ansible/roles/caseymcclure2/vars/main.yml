@@ -1,0 +1,9 @@
+---
+nginx:
+  domain: caseymcclure2
+  port: 3002
+
+mysql:
+  db: #your database name goes here
+  user: #your database user name goes here
+  pass: #your database user password goes here

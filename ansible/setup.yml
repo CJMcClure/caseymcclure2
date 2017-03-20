@@ -1,0 +1,8 @@
+---
+- hosts: staging:production
+  become: true
+  user: root
+  roles:
+    - users
+    - db
+    - caseymcclure2
