@@ -3,6 +3,8 @@
   become: true
   user: root
   roles:
+    - lem
+    - node
     - users
     - db
     - caseymcclure2
