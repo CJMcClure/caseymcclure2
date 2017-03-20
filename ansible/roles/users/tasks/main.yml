@@ -1,0 +1,191 @@
+---
+# Create Project Users ###################################################################################
+
+# Create Groups ##############################################
+
+- group:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ admin_group }}"
+    - "{{ dba_group }}"
+    - "{{ deploy_group }}"
+    - "{{ app_group }}"
+
+
+# Admin ######################################################
+
+- name: Create admin user
+  user:
+    name: "{{ admin_user }}"
+    groups: "{{ admin_group }},{{ dba_group }},{{ deploy_group }},{{ app_group }}"
+    state: present
+
+# Create a .ssh directory for our user
+- name: Create .ssh directory
+  become: true
+  become_user: "{{ admin_user }}"
+  become_method: su 
+  file:
+    path: /home/{{ admin_user }}/.ssh
+    state: directory
+    mode: 0700
+
+# Create authorized_keys file
+- name: Create authorized_keys file
+  become: true
+  become_user: "{{ admin_user }}"
+  become_method: su
+  file:
+    path: /home/{{ admin_user }}/.ssh/authorized_keys
+    state: touch
+    mode: "u=rw,g=,o="
+
+# Add public ssh key to authorized_keys
+- name: Add public ssh key to authorized_keys
+  become: true
+  become_user: "{{ admin_user }}"
+  become_method: su
+  lineinfile:
+    dest: /home/{{ admin_user }}/.ssh/authorized_keys
+    line: "{{ item }}"
+  with_items:
+    - "{{ admin_public_key }}"
+
+# DBA ######################################################
+
+- name: Create dba user
+  user:
+    name: "{{ dba_user }}"
+    group: "{{ dba_group }}"
+    state: present
+
+# Create a .ssh directory for our user
+- name: Create .ssh directory
+  become: true
+  become_user: "{{ dba_user }}"
+  become_method: su 
+  file:
+    path: /home/{{ dba_user }}/.ssh
+    state: directory
+    mode: 0700
+
+# Create authorized_keys file
+- name: Create authorized_keys file
+  become: true
+  become_user: "{{ dba_user }}"
+  become_method: su
+  file:
+    path: /home/{{ dba_user }}/.ssh/authorized_keys
+    state: touch
+    mode: "u=rw,g=,o="
+
+# Add public ssh key to authorized_keys
+- name: Add public ssh key to authorized_keys
+  become: true
+  become_user: "{{ dba_user }}"
+  become_method: su
+  lineinfile:
+    dest: /home/{{ dba_user }}/.ssh/authorized_keys
+    line: "{{ item }}"
+  with_items:
+    - "{{ dba_public_key }}"
+
+# Deployment ######################################################
+
+- name: Create deploy user
+  user:
+    name: "{{ deploy_user }}"
+    group: "{{ deploy_group }}"
+    state: present
+
+# Create a .ssh directory for our user
+- name: Create .ssh directory
+  become: true
+  become_user: "{{ deploy_user }}"
+  become_method: su 
+  file:
+    path: /home/{{ deploy_user }}/.ssh
+    state: directory
+    mode: 0700
+
+# Create authorized_keys file
+- name: Create authorized_keys file
+  become: true
+  become_user: "{{ deploy_user }}"
+  become_method: su
+  file:
+    path: /home/{{ deploy_user }}/.ssh/authorized_keys
+    state: touch
+    mode: "u=rw,g=,o="
+
+# Add public ssh key to authorized_keys
+- name: Add public ssh key to authorized_keys
+  become: true
+  become_user: "{{ deploy_user }}"
+  become_method: su
+  lineinfile:
+    dest: /home/{{ deploy_user }}/.ssh/authorized_keys
+    line: "{{ item }}"
+  with_items:
+    - "{{ deploy_public_key }}"
+
+
+# App ######################################################
+
+- name: Create app user
+  user:
+    name: "{{ app_user }}"
+    group: "{{ app_group }}"
+    state: present
+
+# Create a .ssh directory for our user
+- name: Create .ssh directory
+  become: true
+  become_user: "{{ app_user }}"
+  become_method: su 
+  file:
+    path: /home/{{ app_user }}/.ssh
+    state: directory
+    mode: 0700
+
+# Create authorized_keys file
+- name: Create authorized_keys file
+  become: true
+  become_user: "{{ app_user }}"
+  become_method: su
+  file:
+    path: /home/{{ app_user }}/.ssh/authorized_keys
+    state: touch
+    mode: "u=rw,g=,o="
+
+# Add public ssh key to authorized_keys
+- name: Add public ssh key to authorized_keys
+  become: true
+  become_user: "{{ app_user }}"
+  become_method: su
+  lineinfile:
+    dest: /home/{{ app_user }}/.ssh/authorized_keys
+    line: "{{ item }}"
+  with_items:
+    - "{{ app_public_key }}"
+
+
+
+
+
+
+
+
+
+  
+
+ 
+
+
+  
+    
+
+
+
+
