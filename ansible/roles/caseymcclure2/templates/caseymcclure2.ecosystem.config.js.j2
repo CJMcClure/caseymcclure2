@@ -1,0 +1,11 @@
+{
+  "apps" : [{
+    "name"        : "caseymcclure2",
+    "cwd"         : "/var/www/{{ nginx['domain'] }}/src/server.js",
+    "env": {
+      "DB_DATABASE": "{{ mysql['db'] }}",
+      "DB_USER": "{{ mysql['user'] }}",
+      "DB_PASSWORD": "{{ mysql['pass'] }}"
+    },
+  }]
+}

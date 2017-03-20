@@ -1,0 +1,3 @@
+mysql:
+  user: #your database user name goes here
+  password: #your database user password goes here
