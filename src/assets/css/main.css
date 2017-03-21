@@ -1,0 +1,350 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700';
+
+body
+{
+  height: 100%;
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  font: normal normal normal normal 14px/1.25em 'Open Sans Condensed', sans-serif;
+  color: #444;
+
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+  font-weight: 700;
+}
+
+p
+{
+  font-size: 2rem;
+  line-height: 1.25em;
+}
+
+a
+{
+  text-decoration: none;
+  color: inherit;
+}
+
+header
+{
+  height: 50px;
+  border-bottom: 1px solid #444;
+  overflow: hidden;
+}
+
+header img
+{
+  margin: 0 0 0 25px;
+  height: 50px;
+  width: 150px;
+  float: left;
+}
+
+header img:hover
+{
+  cursor: pointer;
+}
+
+nav
+{
+  float: right;
+  overflow: hidden;
+}
+
+header ul
+{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-weight: 700;
+}
+
+header li
+{
+  line-height: 50px;
+}
+
+nav li:hover
+{
+  cursor: pointer;
+}
+
+#video_cta
+{
+  margin: 0;
+  padding: 0;
+  position: relative;
+  border: none;
+}
+
+video
+{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  min-height: 200px;
+  overflow: hidden;
+  background: #000;
+}
+
+#layer
+{
+  position: absolute;
+  width: 100%;
+  height: 99%;
+  top: 0;
+  background: rgba(7,13,73,0.75);
+}
+
+.tagline
+{
+  font-size: 300%;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+@media screen and (max-width: 650px)
+{
+  /******************
+    ! mobile_nav
+  ******************/
+  .menu
+  {
+    width: 150px;
+    overflow: hidden;
+  }
+
+  .menu_button
+  {
+    height: 50px;
+    width: 30px;
+    margin: 0 25px;
+    float: right;
+  }
+
+  nav li:hover ul
+  {
+    display: block;
+  }
+
+  li ul
+  {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    display: none;
+    border-left: 1px solid #444;
+    border-bottom: 1px solid #444;
+    background-color: #FFF;
+  }
+
+  li ul li
+  {
+    width: 150px;
+    float: none;
+    text-align: left;
+    padding: 0 0 0 10px;
+  }
+
+  li ul li:hover
+  {
+    background-color: #070D49;
+    color: #FFF;
+    font-size: 1.25em;
+  }
+
+  .mobile_nav
+  {
+    display: block;
+  }
+
+  .main_nav
+  {
+    display: none;
+  }
+  /****** end mobile_nav */
+
+}
+
+@media screen and (min-width: 651px)
+{
+  header li
+  {
+    float: left;
+    padding: 0 25px;
+  }
+
+  .mobile_nav
+  {
+    display: none;
+  }
+
+  .main_nav
+  {
+    display: block;
+  }
+
+  header li:hover
+  {
+    cursor: pointer;
+    background-color: #070D49;
+    color: #FFF;
+    font-size: 1.25em;
+  }
+}
+
+/**********************************
+! about
+**********************************/
+section:last-of-type
+{
+  width: 100%; /*960px*/
+  margin: 50px auto 0 auto;
+}
+
+#casey_photo
+{
+  min-width: 200px;
+  max-width: 275px;
+  width: 26.04166666%;/*250/960*/
+  border-radius: 100%;
+  /*box-shadow: 0 0 4px #777;*/
+  margin: 50px auto 0 auto;
+  display: block;
+}
+
+.temp_p
+{
+  width: 72.91666666%;/*700/960*/
+  margin: 50px auto;
+}
+
+.highlight
+{
+  color: #1D2895;
+}
+
+
+/**********************************
+! portfolio
+**********************************/
+
+.portfolio_row
+{
+  overflow: hidden;
+  width: 100%;
+}
+
+.portfolio_presentation
+{
+  width: 50%;/*480/960*/
+  display: block;
+  float: left;
+  margin: 75px 0;
+}
+
+.portfolio_spread_details
+{
+  width: 46.875%;/*480/960*/
+  float: left;
+  padding: 50px 1.5625%;/*15/960*/
+}
+
+.portfolio_spread_details h1
+{
+  font-size: 2.5em;
+}
+
+.portfolio_spread_details > p
+{
+  font-size: 175%;
+}
+
+.spec
+{
+  font: inherit;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 0px) and (max-width: 875px)
+{
+  .portfolio_row
+  {
+    overflow: hidden;
+  }
+
+  .portfolio_presentation
+  {
+    margin: 0 auto;
+    float: none;
+  }
+
+  .portfolio_spread_details
+  {
+    margin: 0 auto;
+    float: none;
+  }
+}
+
+@media screen and (max-width: 468px)
+{
+  .portfolio_presentation
+  {
+    width: 100%;/*700/875*/
+    margin: 50px auto;
+  }
+
+  .portfolio_spread_details
+  {
+    width: 95%;/*600/960*/
+    padding: 0 2.5%;/*15/960*/
+  }
+
+  .portfolio_spread_details h1
+  {
+    font-size: 2em;
+    line-height: 1.5em;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 469px) and (max-width: 875px)
+{
+
+  .portfolio_presentation
+  {
+    width: 90%;/*700/875*/
+    margin: 0 auto;
+    padding: 75px 0;
+  }
+
+  .portfolio_spread_details
+  {
+    width: 85%;/*600/960*/
+    padding: 0 2.5%;/*15/960*/
+  }
+
+  .portfolio_spread_details h1
+  {
+    font-size: 2em;
+    line-height: 1.5em;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 876px) and (max-width: 1061px)
+{
+  .portfolio_spread_details h1
+  {
+    font-size: 2em;
+    line-height: 1.5em;
+  }
+}
