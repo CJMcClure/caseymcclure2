@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.set('view engine', 'pug');
-app.set('views', './views');
+app.set('views', './src/views');
 
 app.use('/', require('./router/main.js')(express));
 
