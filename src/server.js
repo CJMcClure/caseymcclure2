@@ -9,9 +9,9 @@ app.use(bodyParser.json());
 
 app.set('view engine', 'pug');
 //Deployed view path
-// app.set('views', '/var/www/caseymcclure2/src/views');
+app.set('views', '/var/www/caseymcclure2/src/views');
 // Local dev view path
-app.set('views', './views');
+// app.set('views', './views');
 app.set('view options', { layout: false });
 
 app.use(express.static(__dirname + '/assets'));
