@@ -8,7 +8,12 @@ const app = express();
 app.use(bodyParser.json());
 
 app.set('view engine', 'pug');
-app.set('views', './src/views');
+//Deployed view path
+app.set('views', '/var/www/caseymcclure2/src/views');
+// Local dev view path
+// app.set('views', './views');
+
+app.use(express.static(__dirname + '/assets'));
 
 app.use('/', require('./router/main.js')(express));
 
