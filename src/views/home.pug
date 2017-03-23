@@ -1,0 +1,66 @@
+extends main.pug
+block content
+	section
+		img(id="casey_photo" alt="Full Stack Applications Developer" src="img/casey-mcclure.jpg")
+		ul(class="social")
+			li
+				a(href="https://www.facebook.com/casey.j.mcclure")
+					i(class="fa fa-facebook-square")
+			li
+				a(href="https://twitter.com/CaseyJMcClure")
+					i(class="fa fa-twitter")
+			li
+				a(href="https://www.linkedin.com/in/casey-mcclure-93999a38/")
+					i(class="fa fa-linkedin")
+			li
+				a(href="https://github.com/CJMcClure")
+					i(class="fa fa-github")
+		p(class="temp_p") I'm a web applications developer who loves code, business, and finance. My biggest passion in life is learning and this can be seen in the approach I take to developing applications, whether it be understanding the nuances of Agile in the SDLC, leveraging project management platforms like Jira, learning about and integrating the best continuous integration/development tech into my pipelines, or picking the right languages, frameworks, templating engines, and databases for the solution. 
+
+	section(class="portfolio")
+		h1 Web App Projects
+
+	section(class="projects")
+		article(class="projects_app")
+			h1
+				a(href="http://nodefront.104.236.239.154.xip.io") NodeFront Application 
+			ul(class="stack")
+				li
+					span(class="icon-ubuntu" title="Ubuntu")
+				li
+					i(class="icon-nginx" title="Nginx")
+				li
+					i(class="icon-mysql" title="MySQL")
+				li
+					i(class="icon-nodejs" title="NodeJS")
+				li
+					i(class="icon-html5" title="HTML5")
+				li
+					i(class="icon-bootstrap" title="Bootstrap")
+
+			p Nodefront is the prototype for a plug and play, small business, e-commerce application. My vision was to develop a web application any small vendor could sign up for and have a tandem one-touch Store Front, with built in Inventory Management and Payment systems. This prototype captured that core functionality.
+
+			p I leveraged quite a few neat technologies for this web application; NodeJS, Express, Sequelize, STRIPE api, &amp; Bootstrap.
+
+			p <b>What's next?</b> Moving forward, the key components of developmental focus will be to add customizable design templates, scalability to allow for multi vendor use, and a lightweight customer relationship management module.
+
+		article(class="projects_app")
+			h1
+				a(href="http://digi6list.104.236.239.154.xip.io/") Digi6List Application 
+			ul(class="stack")
+				li
+					span(class="icon-ubuntu" title="Ubuntu")
+				li
+					i(class="icon-nginx" title="Nginx")
+				li
+					i(class="icon-javascript" title="JavaScript")
+				li
+					i(class="icon-html5" title="HTML5")
+				li
+					i(class="icon-css3" title="CSS3")
+
+			p Digi6List is a browser based productivity app, based on the methods created by Ivy Lee. Lee, suggested you focus on defining  six tasks to complete per day, carrying unacheived tasks over to the next days list, and continuing to accomplish tasks outside this initial scope if you complete your six quickly. The design is a bit primitive, but it leverages functionality and ease of use. The application uses a timer function that counts down 24 hours everyday, allowing you to know exactly how much time you have left. Once you define an item, you may continue to edit it until you mark it complete. Once you mark it complete, it remains static and unchangeable until midnight. Once midnight arrives, the app will remove completed items, move uncompleted items to the top of your list and reset the remaining fields for you to add new tasks to in the morning.
+
+			p I leveraged a lot of 'vanilla' tech for this; JavaScript, HTML, CSS, &amp; the Local Storage API.
+
+			p <b>What's next?</b> Moving forward, I would like to add user accounts and persistant storage, so you can see what all you've completed in past days and generally get a level of feedback that promotes a feeling of acheivement. 
